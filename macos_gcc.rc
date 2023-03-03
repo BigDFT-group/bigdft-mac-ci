@@ -1,7 +1,6 @@
 '''
 This is the configuration file for the BigDFT installer
-for use on Mac OS X. We prefer to use GCC instead of clang.
-You can install GCC using homebrew.
+for use on Mac OS X which compiles using gcc.
 '''
 
 conditions.add("testing")
@@ -9,6 +8,8 @@ conditions.add("testing")
 # List the module the this rcfile will build
 moduleset = 'bigdft'
 modules = ['spred', ]
+
+PYTHON=python3
 
 def get_gnu():
     '''
@@ -58,15 +59,5 @@ def ntpoly_configuration():
 # For NTPoly
 module_cmakeargs.update({
     'ntpoly': ntpoly_configuration()
-})
-
-def python_configuration():
-    '''
-    Species the configure line for various python packages.
-    '''
-    return ""
-
-module_autogenargs.update({
-   'pyfutile': python_configuration(),
 })
 

@@ -47,13 +47,3 @@ module_cmakeargs.update({
     'ntpoly': ntpoly_configuration(),
 })
 
-def python_configuration():
-    '''
-    Species the configure line for various python packages.
-    '''
-    return ""
-
-module_autogenargs.update({
-   'pyfutile': python_configuration(),
-})
-
