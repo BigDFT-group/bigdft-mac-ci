@@ -2,23 +2,21 @@ name: CI
 on: [push, pull_request]
 jobs:
   build:
+    strategy:
+      matrix:
+        name: [gcc, clang]
+
     runs-on: macos-latest
     steps:
        - name: Checkout
          uses: actions/checkout@v1
        - name: install
-         run: bash install.sh
+         run: bash install.sh ${{ matrix.name }}
        - name: test
-         run: bash test.sh
-       - name: upload_gcc
+         run: bash test.sh ${{ matrix.name }}
+       - name: upload
          if: always()
          uses: actions/upload-artifact@v3
          with:
-           name: build_gcc
-           path: build_gcc
-       - name: upload_clang
-         if: always()
-         uses: actions/upload-artifact@v3
-         with:
-           name: build_clang
-           path: build_clang
+           name: build_${{ matrix.name }}
+           path: build_${{ matrix.name }}
