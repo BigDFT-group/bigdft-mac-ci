@@ -6,6 +6,8 @@ brew link --overwrite gcc
 brew install lapack
 brew install open-mpi
 brew install automake
+pip install numpy
+pip install scipy
 
 # Get BigDFT from Git
 git clone https://gitlab.com/l_sim/bigdft-suite.git
