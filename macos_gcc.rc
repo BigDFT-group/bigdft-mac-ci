@@ -1,0 +1,72 @@
+'''
+This is the configuration file for the BigDFT installer
+for use on Mac OS X. We prefer to use GCC instead of clang.
+You can install GCC using homebrew.
+'''
+
+conditions.add("testing")
+
+# List the module the this rcfile will build
+moduleset = 'bigdft'
+modules = ['spred', ]
+
+def get_gnu():
+    '''
+    Figure out which version of gcc we can use
+    '''
+    from shutil import which
+    for i in range(14, 10, -1):
+        check_c = which("gcc-" + str(i))
+        check_cpp = which("g++-" + str(i))
+
+        if check_c is not None and check_cpp is not None:
+            return "gcc-" + str(i), "g++-" + str(i)
+    raise ValueError("Can't find a valid version of gcc")
+
+def env_configuration():
+    '''
+    Species the configure line for various autotools packages.
+    '''
+    gcc, gpp = get_gnu()
+    env = {}
+    env["FC"] = "mpifort"
+    env["CC"] = gcc
+    env["CXX"] = gpp
+    env["FCFLAGS"] = "-O2 -g -fopenmp -mtune=native"
+    env["LIBS"] = "-lstdc++"
+    env["--with-ext-linalg"] = "-framework Accelerate"
+
+    return " ".join([x + '=' + '"' + y + '"' for x, y in env.items()])
+
+autogenargs = env_configuration()
+
+def ntpoly_configuration():
+    '''
+    For NTPoly we need to specify the cmake options.
+    '''
+    from os import getcwd, path
+    from os.path import join
+
+    cmake_flags = {}
+    cmake_flags["CMAKE_Fortran_FLAGS_RELEASE"] = "-O2 -fopenmp -mtune=native"
+    cmake_flags["FORTRAN_ONLY"] = "YES"
+    cmake_flags["CMAKE_Fortran_COMPILER"] = "mpifort"
+    cmake_flags["CMAKE_PREFIX_PATH"] = path.join(getcwd(), "install")
+
+    return " ".join(['-D' + x + '="' + y + '"' for x, y in cmake_flags.items()])
+
+# For NTPoly
+module_cmakeargs.update({
+    'ntpoly': ntpoly_configuration()
+})
+
+def python_configuration():
+    '''
+    Species the configure line for various python packages.
+    '''
+    return ""
+
+module_autogenargs.update({
+   'pyfutile': python_configuration(),
+})
+

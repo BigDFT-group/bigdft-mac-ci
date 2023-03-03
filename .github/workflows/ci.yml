@@ -10,9 +10,15 @@ jobs:
          run: bash install.sh
        - name: test
          run: bash test.sh
-       - name: upload
+       - name: upload_gcc
          if: always()
          uses: actions/upload-artifact@v3
          with:
-           name: build
-           path: build
+           name: build_gcc
+           path: build_gcc
+       - name: upload_clang
+         if: always()
+         uses: actions/upload-artifact@v3
+         with:
+           name: build_clang
+           path: build_clang
