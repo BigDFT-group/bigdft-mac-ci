@@ -12,8 +12,8 @@ mkdir build
 cd build
 
 # Autogen + build
-python ../bigdft-suite/Installer.py -y autogen 
-python ../bigdft-suite/Installer.py -y build \
-       -f ../bigdft-suite/rcfiles/macos_clang.rc 
+python3 ../bigdft-suite/Installer.py -y autogen 
+python3 ../bigdft-suite/Installer.py -y build \
+         -f ../bigdft-suite/rcfiles/macos_clang.rc 
 
 
