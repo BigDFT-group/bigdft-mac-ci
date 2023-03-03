@@ -9,8 +9,6 @@ conditions.add("testing")
 moduleset = 'bigdft'
 modules = ['spred', ]
 
-PYTHON=python3
-
 def get_gnu():
     '''
     Figure out which version of gcc we can use
