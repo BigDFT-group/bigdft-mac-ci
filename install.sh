@@ -1,6 +1,7 @@
 echo "Hello World!"
 
 # Brew dependencies
+brew install gfortran
 brew install lapack
 brew install open-mpi
 brew install automake
