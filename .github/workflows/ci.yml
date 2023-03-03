@@ -7,8 +7,9 @@ jobs:
        - name: Checkout
          uses: actions/checkout@v1
        - name: install
-         uses: actions/upload-artifact@v3
          run: bash install.sh
+       - name: upload
+         uses: actions/upload-artifact@v3
          with:
            name: build
            path: build
