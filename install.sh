@@ -1,10 +1,19 @@
 echo "Hello World!"
-git clone https://gitlab.com/l_sim/bigdft-suite.git
-mkdir build
-cd build
-python ../bigdft-suite/Installer.py -y autogen 
 
+# Brew dependencies
 brew install lapack
 brew install open-mpi
-which mpif90
+
+# Get from git
+git clone https://gitlab.com/l_sim/bigdft-suite.git
+
+# Build directory
+mkdir build
+cd build
+
+# Autogen + build
+python ../bigdft-suite/Installer.py -y autogen 
+python ../bigdft-suite/Installer.py -y build \
+       -f ../bigdft-suite/rcfiles/macos_clang.rc 
+
 
