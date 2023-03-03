@@ -1,3 +1,5 @@
+# Takes as an argument either gcc or clang
+
 # Setup your computer
 brew reinstall gcc
 brew link --overwrite gcc
