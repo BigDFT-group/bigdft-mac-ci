@@ -4,4 +4,4 @@ jobs:
   build:
     os:           macos-latest
     steps:
-      run: bash install.sh
+       - run: bash install.sh
