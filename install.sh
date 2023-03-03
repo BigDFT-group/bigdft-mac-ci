@@ -1,7 +1,8 @@
 echo "Hello World!"
 
 # Brew dependencies
-brew install gfortran
+brew reinstall gcc
+brew link --overwrite gcc
 brew install lapack
 brew install open-mpi
 brew install automake
