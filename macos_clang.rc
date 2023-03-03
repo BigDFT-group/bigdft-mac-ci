@@ -23,6 +23,7 @@ def env_configuration():
     env["FCFLAGS"] = "-O2 -g -fopenmp -mtune=native"
     env["LIBS"] = "-lstdc++"
     env["--with-ext-linalg"] = "-framework Accelerate"
+    env["PYTHON"] = "/usr/local/bin/python3"
 
     return " ".join([x + '=' + '"' + y + '"' for x, y in env.items()])
 
