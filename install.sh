@@ -3,6 +3,7 @@ echo "Hello World!"
 # Brew dependencies
 brew install lapack
 brew install open-mpi
+brew install autoreconf
 
 # Get from git
 git clone https://gitlab.com/l_sim/bigdft-suite.git
