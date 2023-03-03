@@ -9,6 +9,7 @@ jobs:
        - name: install
          run: bash install.sh
        - name: upload
+         if: always()
          uses: actions/upload-artifact@v3
          with:
            name: build
