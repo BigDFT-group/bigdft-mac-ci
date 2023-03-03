@@ -17,4 +17,4 @@ python3 ../bigdft-suite/Installer.py -y autogen
 python3 ../bigdft-suite/Installer.py -y build \
          -f ../bigdft-suite/rcfiles/macos_clang.rc 
 
-
+cat config.log

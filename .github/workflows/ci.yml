@@ -4,5 +4,11 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-       - uses: actions/checkout@v1
-       - run: bash install.sh
+       - name: Checkout
+         uses: actions/checkout@v1
+       - name: install
+         uses: actions/upload-artifact@v3
+         run: bash install.sh
+         with:
+           name: build
+           path: build
