@@ -8,6 +8,7 @@ brew install open-mpi
 brew install automake
 pip3 install numpy
 pip3 install scipy
+pip3 install setuptools
 
 # Get BigDFT from Git
 git clone https://gitlab.com/l_sim/bigdft-suite.git
